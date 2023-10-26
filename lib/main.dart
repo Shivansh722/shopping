@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shopping/pages/splash_page.dart';
-
+import 'package:shopit/pages/splash_page.dart';
+import 'package:shopit/models/cart.dart';
+import 'package:provider/provider.dart';
  void main() {
   runApp(const MyApp());
 }
@@ -10,9 +11,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const  MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SplashPage(),
+    return ChangeNotifierProvider(
+      create: (context) => Cart(),
+      builder: (context, child) => const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: SplashPage(),
+      ),
     );
   }
 }
